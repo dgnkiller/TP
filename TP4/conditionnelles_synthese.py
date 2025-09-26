@@ -21,12 +21,12 @@
 
 # Décommenter et compléter la signature donnée puis faire la suite
 def conseil_voiture(nb_jours, nb_km):
-    """"
+    """
     
         Précondition :
         Exemple(s) :
         >>>
-""""   
+ """
     
 
 ####################
