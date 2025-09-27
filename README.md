@@ -1,1 +1,1 @@
-python -m doctest -v
+python -m doctest -v nomfichier.py
