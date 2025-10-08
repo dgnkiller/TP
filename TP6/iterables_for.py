@@ -274,7 +274,26 @@ def prefixes(chaine:str)->list[str]:
         
 
 # Décommenter et compléter la signature donnée puis faire la suite
-#def insere_sauts_ligne(chaine, lg_ligne
+def insere_sauts_ligne(texte:str, lg_ligne:int)->str:
+    """ envoie une nouvelle chaîne qui est texte dans laquelle des sauts de ligne (caractère spécial
+    '\n') ont été ajoutés après chaque lg_ligne caractères.
+
+    Précondition :
+    Exemple(s) :
+    $$$ insere_sauts_ligne("Je ne sais pas si des mots seront coupés.", 5)
+    "Je ne\\n sais\\n pas \\nsi de\\ns mot\\ns ser\\nont c\\noupés\\n."
+    """
+    
+    texte_saut=""
+    compte=0
+    for c in texte:
+        compte+=1
+        if compte%lg_ligne ==0 :
+            texte_saut+=f'{c}\n'
+        else:
+            texte_saut+=c
+    return texte_saut
+        
 
 
 ##########################
