@@ -300,4 +300,21 @@ def insere_sauts_ligne(texte:str, lg_ligne:int)->str:
 # Écriture d’un programme principal
 ##########################
 
-# À vous de jouer ! 
+def main()->None:
+    """ à_remplacer_par_ce_que_fait_la_fonction
+
+    Précondition :
+    Exemple(s) :
+    $$$
+    """
+    n=int(input('Entrer une longueur de liste :'))
+    print('Saisie des 4 valeurs de la liste :')
+    liste=saisie_liste(n)
+    liste_positive=positive(liste)
+    reponse=f'Le résultat de positive({liste}) est : {liste_positive}' 
+    print(reponse)
+
+
+if __name__ == '__main__':
+    # éxécuté qd ce module n'est pas initialisé par un import.
+    main()
