@@ -118,7 +118,7 @@ def premieres_occurrences(chaine:str)->str:
     "bigybo"
     """
     res=''
-    elmt_precedent=chaine[0]
+    elmt_precedent=chaine[0]Cette fonction doit utiliser des fonctio
     for c in chaine[1:]:
         if not c==elmt_precedent:
             res+=c
@@ -182,22 +182,27 @@ def nom_domaines(extensions:list[str], domaines:list[str])->list[str]:
             
 
 # Décommenter et compléter la signature donnée puis faire la suite
-def max_identiques(l:list[int])->int:
-    """ renvoie le nombre maximum d’éléments consécutifs identiques.
-    Précondition :
-    Exemple(s) :
-    $$$ max_identiques([1, 2, 2, 2, 1, 6, 6, 5])
-    3  
-    """
-    compt=0
-    elmt_preced=l[0]
-    for elmt in l[1:]:
-        if elmt==elmt_preced:
-            compt+=1
-        elmt_preced=elmt
-         
-    return compt
-       
+# def max_identiques(l:list[int])->int:
+#     """ renvoie le nombre maximum d’éléments consécutifs identiques.
+#     Précondition :l non vide
+#     Exemple(s) :
+#     $$$ max_identiques([1, 2, 2, 2, 1, 6, 6, 5])
+#     3
+#     $$$ max_identiques([0,3,3,3,5,5,5,5])
+#     4
+#     
+#     """
+#     compt=0
+#     elmt_preced=l[0]
+#     for elmt in l[1:]:
+#         if elmt==elmt_preced:
+#             compt=compt+1
+#         elmt_preced=elmt
+#         else:
+# 
+#             compt=0
+#     return compt
+     
 
 # Décommenter et compléter la signature donnée puis faire la suite
 def suffixes(chaine:str)->list[str]:
@@ -208,20 +213,76 @@ def suffixes(chaine:str)->list[str]:
     $$$ suffixes('fin')
     ['', 'n', 'in', 'fin'] 
     """
-    l=[]
+    l=['']
     res=''
-    for c in chaine:
+    for c in chaine[::-1]:
+        res=c+res
+        l.append(res)
+    return l
+        
         
 # Décommenter et compléter la signature donnée puis faire la suite
-#def resume(
+def resume(chaine:str)->str:
+    """renvoie la chaîne résumée qui indique le nombre d’occurrences consécutives de chaque caractère
+    Précondition :
+    Exemple(s) :
+    $$$ resume("abbbaabc")
+    '1a3b2a1b1c'
+    
+    """
+    res=''
+    compt=1
+    elemt_prec=chaine[0]
+    for c in chaine[1:]:
+        if c==elemt_prec:
+            compt=compt+1
+            elemt_prec=c
+           
+        else:
+            res=res+str(compt)+elemt_prec
+            elemt_prec=c
+            compt=1
+    res=res+str(compt)+elemt_prec
+    return res
+        
+       
 
 # Décommenter et compléter la signature donnée puis faire la suite
-#def ajout_separateur(liste, sep
+def ajout_separateur(liste:list[str], sep:str)->str:
+    """ envoie une chaîne qui intercale le séparateur entre chaque élément de la liste
+
+    Précondition :
+    Exemple(s) :
+    $$$ ajout_separateur(["n'est", 'il', 'pas', 'vrai ?'], '-')
+    "n'est-il-pas-vrai ?"
+    $$$ ajout_separateur(['vrai ?'], '*')
+    'vrai ?'
+    """
+    res=''
+    for elmt in liste:
+        res+=elmt+sep
+    return res[:-1]
+    
+    
 
 # Décommenter et compléter la signature donnée puis faire la suite
-#def construit_mots(mot1, mot2
+def construit_mots(mot1:list[str], mot2:list[str])->list[str]:
+    """ renvoie la liste des mots possibles en appariant les mots des listes
+    Précondition :
+    Exemple(s) :
+    $$$ construit_mots(["ta", "meu"], ["ble", "re", "le"])
+    ["table", 'bleta', 'tare', 'reta', 'tale', 'leta', 'meuble', 'blemeu', 'meure', 'remeu', 'meule', 'lemeu'] 
+    """
+    res=[]
+    for m1 in mot1:
+        for m2 in mot2:
+            mot=m1+m2
+            mots=m2+m1
+            res.append(mot)
+            res.append(mots)
+    return res
+      
 
 ########################
 # Zorglang
 ######################
-
