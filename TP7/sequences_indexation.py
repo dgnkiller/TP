@@ -118,7 +118,7 @@ def premieres_occurrences(chaine:str)->str:
     "bigybo"
     """
     res=''
-    elmt_precedent=chaine[0]Cette fonction doit utiliser des fonctio
+    elmt_precedent=chaine[0]
     for c in chaine[1:]:
         if not c==elmt_precedent:
             res+=c
@@ -286,3 +286,4 @@ def construit_mots(mot1:list[str], mot2:list[str])->list[str]:
 ########################
 # Zorglang
 ######################
+1<2<1
