@@ -13,7 +13,7 @@
 JOUEUR1='X'
 JOUEUR2='O'
 
-import copy
+
 
 def afficher_grille(grille: list[list]) -> None:
     """ affiche la grille du tictactoe
@@ -61,22 +61,33 @@ def saisir_indices(grille:list[list])->tuple:
     Précondition :
     Exemple(s) :
     $$$
-    """
-    while True:
-        try:
-            
-            saisie = int(input("Entrez le numéro de la case à jouer : "))
-            if 1<= saisie and saisie<= 9:
+    """  
+    saisie_valide = False
+    
+    ligne_choisie = -1
+    colonne_choisie = -1
+    while not saisie_valide:
+        texte_saisi = input("Entrez le numéro de la case à jouer (1-9) : ")
+        if texte_saisi.isdigit():
+            saisie = int(texte_saisi)
+
+            if 1 <= saisie <= 9:
                 ligne = (saisie - 1) // 3
                 colonne = (saisie - 1) % 3
-                if case_jouable(grille,ligne,colonne):
-                    return ligne, colonne
+
+                if case_jouable(grille, ligne, colonne):
+                    ligne_choisie = ligne
+                    colonne_choisie = colonne
+                    saisie_valide = True
                 else:
-                    print("Cette case n'est pas jouable ! Essayez un autre")
+                    print("Cette case n'est pas jouable ! Essayez une autre.")
             else:
-                print("Le numéro decase doit etre compris entre 1 et 9")
-        except ValueError:
-            print("Veuillez entrer un CHIFFRE ENTIER")
+                print("Le numéro doit être compris entre 1 et 9.")
+        else:
+            print("Veuillez entrer un CHIFFRE ENTIER valide.")
+
+    return ligne_choisie, colonne_choisie
+
 
 def affiche_joueur_courant(joueur:str)->None:
     """ affiche un message indiquant quel joueur doit jouer
@@ -95,6 +106,8 @@ def jouer_coup(grille: list[list], ligne: int, colonne: int, symbole: str) ->lis
     $$$
     """
     grille[ligne][colonne]=symbole
+    return grille
+    
 def changer_joueur(joueur:str)->str:
     """ à_remplacer_par_ce_que_fait_la_fonction
 

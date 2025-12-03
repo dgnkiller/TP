@@ -17,9 +17,10 @@ def creer_grille(l:int,c:int)->list[list]:
     Exemple(s) :
     $$$ 
     """
-    g=[None]*l
-    for k in range(l):
-        g[k]=[' ']*c
+    g=[]
+    for _ in range(l):
+        ligne=[" "]*c
+        g.append(ligne)
     return g
 
 def afficher_grille(grille: list[list]) -> None:
@@ -28,20 +29,26 @@ def afficher_grille(grille: list[list]) -> None:
     Précondition :
     Exemple(s) :
     $$$
-    """   
-    print(" 1   2   3   4   5   6   7")
+    """
+    nb_col=len(grille[0])
+    
+    entete=""
+    for k in range(nb_col):
+        entete+=f" {k+1}  "
+    print(entete)
+    
     for i in range(len(grille)):
         ligne_a_afficher = ""
         for j in range(len(grille[i])):
             ligne_a_afficher += f" {grille[i][j]} "
             
-            if j < len(grille[i]) - 1: # pour ne pas mettre de | après la dernière colonne
+            if j < nb_col - 1: # pour ne pas mettre de | après la dernière colonne
                 ligne_a_afficher += "|"
         
     
         print(ligne_a_afficher)
         
         if i < len(grille) - 1:
-            str="---+"*7
-            print(str[:len(str)-1])
+            ligne_sep="---+"*nb_col
+            print(ligne_sep[:-1])
             
